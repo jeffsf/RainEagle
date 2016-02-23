@@ -6,7 +6,6 @@
 __author__ = "Peter Shipley"
 __version__ = "0.1.7"
 
-
 import RainEagle
 import time
 from pprint import pprint
@@ -23,31 +22,30 @@ day_delta_delivered = 0
 curr_day = -1
 
 
-def main(eg) :
+def main(eg):
     print_data(eg)
     exit(0)
 
 
-def print_data(eg) :
+def print_data(eg):
     rh = eg.get_history_data()
-    #+ # endtime=None, frequency=None) :
+    # + # endtime=None, frequency=None) :
     global curr_day
-
 
     curr_day = time.gmtime(1);
 
-    for dat in rh['HistoryData']['CurrentSummation'] :
+    for dat in rh['HistoryData']['CurrentSummation']:
         print_currentsummation(dat)
 
     print "# day_delta_received={0:0.4f}\tday_delta_delivered={1:0.4f} : {2:0.4f}".format(
-            day_delta_received,
-            day_delta_delivered,
-            (day_delta_delivered - day_delta_received))
+        day_delta_received,
+        day_delta_delivered,
+        (day_delta_delivered - day_delta_received))
     print "# max_delta_received={0:0.4f}\tmax_delta_delivered={1:0.4f}".format(
-            max_delta_received, max_delta_delivered)
+        max_delta_received, max_delta_delivered)
 
 
-def print_currentsummation(cs) :
+def print_currentsummation(cs):
     global last_delivered
     global last_received
 
@@ -66,34 +64,34 @@ def print_currentsummation(cs) :
 
     # print "Multiplier=", multiplier, "Divisor=", divisor, "Demand=", demand
 
-    if multiplier == 0 :
+    if multiplier == 0:
         multiplier = 1
 
-    if divisor == 0 :
+    if divisor == 0:
         divisor = 1
 
     reading_received = received * multiplier / float(divisor)
     delta_received = (reading_received - last_received)
     last_received = reading_received
-    if (delta_received > max_delta_received and delta_received < 1000) :
+    if (delta_received > max_delta_received and delta_received < 1000):
         max_delta_received = delta_received
-        #print "new max_delta_received :", max_delta_received
+        # print "new max_delta_received :", max_delta_received
 
     reading_delivered = delivered * multiplier / float(divisor)
     delta_delivered = (reading_delivered - last_delivered)
     last_delivered = reading_delivered
-    if (delta_delivered > max_delta_delivered and delta_delivered < 1000) :
+    if (delta_delivered > max_delta_delivered and delta_delivered < 1000):
         max_delta_delivered = delta_delivered
-        #print "\t\tnew max_delta_delivered :", max_delta_delivered
+        # print "\t\tnew max_delta_delivered :", max_delta_delivered
 
     time_struct = time.localtime(time_stamp)
-    if curr_day.tm_mday != time_struct.tm_mday :
+    if curr_day.tm_mday != time_struct.tm_mday:
         curr_day = time_struct
         print "# {0} day_delta_received={1:0.4f}".format( \
-                    time.strftime("%a %Y-%m-%d", curr_day),
-                    day_delta_received) \
-            + "\tday_delta_delivered={0:0.4f}".format(day_delta_delivered) \
-            + " : {0:0.4f}".format((day_delta_delivered - day_delta_received))
+            time.strftime("%a %Y-%m-%d", curr_day),
+            day_delta_received) \
+              + "\tday_delta_delivered={0:0.4f}".format(day_delta_delivered) \
+              + " : {0:0.4f}".format((day_delta_delivered - day_delta_received))
         day_delta_received = 0
         day_delta_delivered = 0
 
