@@ -1,10 +1,10 @@
 # python setup.py --dry-run --verbose install
 
 import os.path
-from setuptools import setup, find_packages
 from distutils.command.install_scripts import install_scripts
-
 from distutils.core import setup
+
+from setuptools import find_packages
 
 
 class install_scripts_and_symlinks(install_scripts):

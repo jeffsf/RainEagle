@@ -1,7 +1,5 @@
 import time
 import xml.etree.ElementTree as ET
-import urllib
-import urllib2
 
 # import base64
 

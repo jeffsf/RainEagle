@@ -7,11 +7,11 @@ __author__ = "Peter Shipley"
 __version__ = "0.1.7"
 
 # import RainEagle
-from RainEagle import Eagle, to_epoch_1970
-import time
-import os
 import argparse
-from pprint import pprint
+import os
+import time
+
+from RainEagle import Eagle, to_epoch_1970
 
 debug = 0
 

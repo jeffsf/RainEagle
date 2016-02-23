@@ -3,9 +3,7 @@ __copyright__ = "Copyright (C) 2014 Peter Shipley"
 __license__ = "BSD"
 __version__ = "0.1.9"
 
-import socket
 # import sys
-import os
 # import time
 # import xml.etree.ElementTree as ET
 # import urllib
@@ -14,19 +12,14 @@ import os
 # from math import floor
 # from urlparse import urlparse
 # import json
-from warnings import warn
-from distutils.version import LooseVersion
 
 # from RainEagle.Eagle_soc import Eagle_soc
-from RainEagle.Eagle_util import to_epoch_2000, to_epoch_1970, _tohex, _twos_comp, _et2d
-from RainEagle.Eagle_cloud import Eagle_cloud
 from RainEagle.Eagle_cgi import Eagle_cgi
+from RainEagle.Eagle_cloud import Eagle_cloud
 
 min_fw_ver = "2.0.21"
 
 __all__ = ['RainEagleResponseError', 'Eagle', 'Eagle_cloud', 'Eagle_cgi', 'to_epoch_1970, to_epoch_2000']
-
-from pprint import pprint
 
 
 # api_arg_format = { }

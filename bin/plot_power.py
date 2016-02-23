@@ -6,12 +6,10 @@
 __author__ = "Peter Shipley"
 __version__ = "0.1.7"
 
-import RainEagle
 import time
-from pprint import pprint
-from RainEagle import Eagle, to_epoch_1970
 
-import json
+import RainEagle
+from RainEagle import to_epoch_1970
 
 last_delivered = 0
 last_received = 0

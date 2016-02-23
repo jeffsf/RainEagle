@@ -1,16 +1,11 @@
 import os
 # import time
 # import xml.etree.ElementTree as ET
-import urllib
 import urllib2
 # iimport base64
 import json
 
-from pprint import pprint
-
 __all__ = ['Eagle_cloud']
-
-import ssl
 
 
 class Eagle_cloud(object):
